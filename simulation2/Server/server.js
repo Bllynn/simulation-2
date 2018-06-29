@@ -9,6 +9,7 @@ const controller=require('./controller');
 app.get('/api/houses',controller.getAllHouses)
 
 app.post('/api/houses',controller.newHouse)
+app.delete('/api/houses',contoller.delete)
 
 
 

@@ -13,35 +13,33 @@ export default class Dashboard extends Component{
   }
   componentDidMount() {
       axios.get('/api/houses').then((houses)=>{
-          this.state.houses.map((e,id)=>{
-            return(
-                <div key={id}>{e.name}{e.address}{e.city}{e.state}{e.zipCode} </div>
-            )
-        })
+        //   console.log(houses.data)
+          this.setState({
+              houses:houses.data
+          })
       })
-    }
+  }
+    
 
 
   
   
     render(){
-        // let houses = this.state.houses.map((e,id)=>{
-        //       return(
-        //           <div key={id}>{e.name}{e.address}{e.city}{e.state}{e.zipCode} </div>
-        //       )
-        //   })
-
+        let houses = this.state.houses.map((e,id)=>{
+              return(
+                  <House/>
+              )
+          })
         return (
             <div className='dashboard-component'>
           Dashboard
-          {componentDidMount}
 
           
           <button className='Add New Property'>
           <Link to ='/Wizard'>Add New Property</Link>
           </button>
         
-          <House/>
+          {houses}
           </div>
         )
         

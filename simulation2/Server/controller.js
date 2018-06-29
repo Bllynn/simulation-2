@@ -18,6 +18,15 @@ module.exports={
             console.log(err)
             res.send(err)
         })
+    },
+    delete:(req,res)=>{
+        const dbInstance=req.app.get('db');
+        const{id}=req.params
+        dbInstance.delete([id]).then(response=>res.send(response))
+        .catch(err=>{
+            console.log(err)
+            res.send(err)
+        })
     }
 
 
