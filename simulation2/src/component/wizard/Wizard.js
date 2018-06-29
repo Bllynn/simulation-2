@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import route from '../../route';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
+
 
 
 class Wizard extends Component{
@@ -40,6 +41,17 @@ class Wizard extends Component{
           zipCode: event.target.value
         })
     }
+    handleClick(){
+        axios.post('/api/houses',this.state).then(houses=>{
+            this.setState({
+                name:'',
+                address:'',
+                city:'',
+                state:'',
+                zipCode:''
+            })
+        })
+    }
 
 
     render(){
@@ -70,7 +82,10 @@ class Wizard extends Component{
             value={this.state.zipCode}
             onChange={this.handleChangeZipCode}/>
             
-            <button className='complete-button'>Complete</button>
+            <button className='complete-button'
+            onClick={()=>{this.handleClick()}}>
+            Complete
+             </button>
             </div>
         )
     }

@@ -8,7 +8,7 @@ const controller=require('./controller');
 
 app.get('/api/houses',controller.getAllHouses)
 
-app.post('/api/houses',controller.post)
+app.post('/api/houses',controller.newHouse)
 
 
 
